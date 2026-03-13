@@ -1,1 +1,5 @@
 /node_modules
+
+#git hub link
+git remote add origin https://github.com/kumarvishal7441/shoppyglobebackend.git
+# all api  tested and all is working without any error

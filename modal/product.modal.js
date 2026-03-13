@@ -3,16 +3,16 @@ import mongoose from 'mongoose';
 
 // schema or blueprint of product
 const productSchema = new mongoose.Schema({
-    title:String,
-    category:String,
-    price:Number,
-    discount:Number,
-    rating:Number,
-    description:String,
-    brand:String,
+    title: String,
+    category: String,
+    price: Number,
+    discount: Number,
+    rating: Number,
+    description: String,
+    brand: String,
 
 });
 
-// mpdal
-const productmodal = mongoose.model('product',productSchema);
-export  default productmodal;
+// modal
+const productmodal = mongoose.model('product', productSchema);
+export default productmodal;

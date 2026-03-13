@@ -24,7 +24,32 @@ export async function Fetchproduct(req, res) {
         return res.status(500).json({ "unable to fetch data": error })
     }
 }
-export function Fetchproductone(){}
+// fetching product for single item
+export async function Fetchproductone(req, res) {
+    try {
+        const Onecart = await productmodal.findById(req.params.id)
+        console.log(Onecart)
+        if (!Onecart) {
+            return res.status(404).json("product is not available")
+        } else {
+            return res.status(200).json({
+                product: {
+                    title: Onecart.title,
+                    category: Onecart.category,
+                    price: Onecart.price,
+                    discount: Onecart.discount,
+                    rating: Onecart.rating,
+                    description: Onecart.description,
+                    brand: Onecart.brand,
+                }
+
+            })
+        }
+
+    } catch (error) {
+        return res.status(500).json({ "err": error })
+    }
+}
 
 // update the product category
 export async function Updateproduct(req, res) {

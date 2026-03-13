@@ -1,12 +1,12 @@
 // mongoose connected to data
 import mongoose from 'mongoose';
+// creating schema for register and login
+const Userschema = new mongoose.Schema({
+    user: String,
+    email: String,
+    password: String,
 
-const Userschema = new  mongoose.Schema({
-    user:String,
-    email:String,
-    password:String,
-    
 });
-
-const userModal = mongoose.model("user",Userschema);
+// exporting the modal of user
+const userModal = mongoose.model("user", Userschema);
 export default userModal

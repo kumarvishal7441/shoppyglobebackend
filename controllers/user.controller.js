@@ -40,17 +40,17 @@ export async function Login(req, res) {
             if (!validpass) {
                 res.status(409).json("user password wrong")
             }
-            var token = jwt.sign({ id: data.id }, 'SECRETKEY',{expiresIn:"30m"});
+            // creating token
+            const token = jwt.sign({ id: data.id }, 'SECRETKEY', { expiresIn: "30m" });
             return res.status(200).json({
                 user: {
                     email: data.email,
                     user: data.user
                 },
-                accessToken :token,
+                accessToken: token,
 
             })
 
-            return res.status(201).json({ "new user successfully created": newuser })
         }
     } catch (error) {
         res.status(500).json({ "err": error.message })

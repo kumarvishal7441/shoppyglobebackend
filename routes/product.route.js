@@ -4,11 +4,11 @@ import { verifyToken } from "../midddleware/verify.js";
 
 
 
-export function productRoute(app){
-    // create product
-    app.post('/api/cart',verifyToken,CreateProduct)
-    app.put('/api/cart/:id',verifyToken,Updateproduct)
-    app.delete('/api/cart/:id',verifyToken,Deleteproduct)
-    app.get('/api/products',verifyToken,Fetchproduct)
-    app.get('/api/products/:id',verifyToken,Fetchproductone)
+export function productRoute(app) {
+    // create product route for api
+    app.post('/cart', verifyToken, CreateProduct)
+    app.put('/cart/:id', verifyToken, Updateproduct)
+    app.delete('/cart/:id', verifyToken, Deleteproduct)
+    app.get('/products', verifyToken, Fetchproduct)
+    app.get('/products/:id', verifyToken, Fetchproductone)
 }
