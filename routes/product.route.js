@@ -1,12 +1,14 @@
-import { CreateProduct, Deleteproduct, Fetchproduct, Updateproduct } from "../controllers/product.controller.js";
+import { CreateProduct, Deleteproduct, Fetchproduct, Fetchproductone, Updateproduct } from "../controllers/product.controller.js";
+import { verifyToken } from "../midddleware/verify.js";
 
 
 
 
 export function productRoute(app){
     // create product
-    app.post('/api/product',CreateProduct)
-    app.get('/api/product',Fetchproduct)
-    app.put('/api/product/:id',Updateproduct)
-    app.delete('/api/product/:id',Deleteproduct)
+    app.post('/api/cart',verifyToken,CreateProduct)
+    app.put('/api/cart/:id',verifyToken,Updateproduct)
+    app.delete('/api/cart/:id',verifyToken,Deleteproduct)
+    app.get('/api/products',verifyToken,Fetchproduct)
+    app.get('/api/products/:id',verifyToken,Fetchproductone)
 }

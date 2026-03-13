@@ -24,6 +24,7 @@ export async function Fetchproduct(req, res) {
         return res.status(500).json({ "unable to fetch data": error })
     }
 }
+export function Fetchproductone(){}
 
 // update the product category
 export async function Updateproduct(req, res) {

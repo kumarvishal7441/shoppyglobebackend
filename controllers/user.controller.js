@@ -40,7 +40,7 @@ export async function Login(req, res) {
             if (!validpass) {
                 res.status(409).json("user password wrong")
             }
-            var token = jwt.sign({ id: data.id }, 'secret',{expiresIn:"30m"});
+            var token = jwt.sign({ id: data.id }, 'SECRETKEY',{expiresIn:"30m"});
             return res.status(200).json({
                 user: {
                     email: data.email,
