@@ -2,7 +2,7 @@ import userModal from "../modal/user.modal.js"
 import bcrypt from "bcrypt"
 
 // create user
-export async function Createuser(req,res){
+export async function Register(req,res){
     try{
         const{user,email,password}=req.body
 
@@ -27,7 +27,7 @@ export async function Createuser(req,res){
 }
 
 // verify user
-export async function Verifyuser(req,res){
+export async function Login(req,res){
         try{
         const{email,password}=req.body
 

@@ -1,7 +1,7 @@
-import { Createuser, Verifyuser } from "../controllers/user.controller.js"
+import { Login, Register } from "../controllers/user.controller.js"
 
 
 export function UserRoute(app){
-    app.post('/register',Createuser)
-    app.post('/login',Verifyuser)
+    app.post('/register',Register)
+    app.post('/login',Login)
 }
