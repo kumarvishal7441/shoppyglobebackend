@@ -35,14 +35,17 @@ export async function Login(req,res){
     if(!data){
        return res.status(409).json("user not found")
     } else {
-        const newuser =  await userModal.create(
-            {
-                user,
-                email,
-                password:bcrypt.hashSync(password, 10),
+        let validpass = bcrypt.compareSync(password,data.password)
+        if(!validpass){
+            res.status(409).json("user password wrong")
+        } else{
+            return res.status(200).json({user:{
+                email:data.email,
+                user:data.user
             }
-        );
-        console.log(newuser)
+            
+        })
+        }
         return res.status(201).json({"new user successfully created":newuser})
     }
     } catch (error){
