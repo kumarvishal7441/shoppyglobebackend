@@ -1,11 +1,11 @@
-import userModal from "../modal/user.modal.js"
+import userModal from "../modal/user.modal.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken";
 
 // create user
 export async function Register(req, res) {
     try {
-        const { user, email, password } = req.body
+        const { firstname, lastname, email, password } = req.body
 
         const data = await userModal.findOne({ email });
         if (data) {
@@ -13,7 +13,8 @@ export async function Register(req, res) {
         } else {
             const newuser = await userModal.create(
                 {
-                    user,
+                    firstname,
+                    lastname,
                     email,
                     password: bcrypt.hashSync(password, 10),
                 }
@@ -38,14 +39,15 @@ export async function Login(req, res) {
         } else {
             let validpass = bcrypt.compareSync(password, data.password)
             if (!validpass) {
-                res.status(409).json("user password wrong")
+               return res.status(409).json("user password wrong")
             }
             // creating token
             const token = jwt.sign({ id: data.id }, 'SECRETKEY', { expiresIn: "30m" });
             return res.status(200).json({
                 user: {
                     email: data.email,
-                    user: data.user
+                    firstname: data.firstname,
+                    lastname:data.lastname
                 },
                 accessToken: token,
 
